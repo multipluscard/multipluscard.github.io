@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Transação on Multiplus Card [Docs]</title><link>http://docs.multipluscard.com.br/pt/documentacao/transacao/</link><description>Recent content in Transação on Multiplus Card [Docs]</description><generator>Hugo</generator><language>pt</language><copyright>Copyright (c) 2025 Multiplus Card</copyright><lastBuildDate>Thu, 08 May 2025 08:54:32 -0300</lastBuildDate><atom:link href="http://docs.multipluscard.com.br/pt/documentacao/transacao/index.xml" rel="self" type="application/rss+xml"/><item><title>Introdução</title><link>http://docs.multipluscard.com.br/pt/documentacao/transacao/indroducao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/transacao/indroducao/</guid><description>&lt;p>A API de Transações da Multiplus Card permite consultar e gerenciar operações realizadas nas plataformas da empresa. Ela oferece recursos para:&lt;/p></description></item><item><title>Autenticação</title><link>http://docs.multipluscard.com.br/pt/documentacao/transacao/autenticacao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/transacao/autenticacao/</guid><description>&lt;p>Para acessar os recursos da API é necessário que seja realizada primeiramente a autenticação para gerar o JWT Token utilizado nas requisições.&lt;/p></description></item><item><title>Consulta de Transações</title><link>http://docs.multipluscard.com.br/pt/documentacao/transacao/consulta/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/transacao/consulta/</guid><description>&lt;p>Após realizar a autenticação, as transações podem ser consultadas com os parâmetros descritos a seguir:&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Parâmetro&lt;/th>
+ &lt;th>Obrigatório&lt;/th>
+ &lt;th>Descrição&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>Cnpj&lt;/td>
+ &lt;td>Sim&lt;/td>
+ &lt;td>CNPJ do solicitante (Apenas números). Exemplo: &lt;code>05625872000169&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DataInicial&lt;/td>
+ &lt;td>Sim&lt;/td>
+ &lt;td>Data e hora de início do período de consulta. Formato: &lt;code>YYYY-MM-DDTHH:MM:SS&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DataFinal&lt;/td>
+ &lt;td>Sim&lt;/td>
+ &lt;td>Data e hora final do período de consulta (máximo 30 dias entre DataInicial e DataFinal).&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>PaginaNumero&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Número da página para paginação dos resultados. Exemplo: &lt;code>1&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>QtdRegistro&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Quantidade de registros por página (máximo 100 registros).&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>PDV&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por PDV. Pode enviar até 5 registros. Exemplo: &lt;code>PDV=1&amp;amp;PDV=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Adquirente&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por adquirente. Pode enviar até 5 registros. Exemplo: &lt;code>Adquirente=1&amp;amp;Adquirente=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Bandeira&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por bandeira. Pode enviar até 5 registros. Exemplo: &lt;code>Bandeira=1&amp;amp;Bandeira=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>GrupoServico&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por grupo de serviço. Pode enviar até 5 registros. Exemplo: &lt;code>GrupoServico=1&amp;amp;GrupoServico=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Servico&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por serviço. Pode enviar até 5 registros. Exemplo: &lt;code>Servico=1&amp;amp;Servico=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Status&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por status. Pode enviar até 5 registros. Exemplo: &lt;code>Status=1&amp;amp;Status=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Autorizacao&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por autorização. Pode enviar até 5 registros. Exemplo: &lt;code>Autorizacao=1&amp;amp;Autorizacao=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>NSU&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Filtro por NSU. Pode enviar até 5 registros. Exemplo: &lt;code>NSU=1&amp;amp;NSU=2&lt;/code>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>RetornaSplit&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Define se o retorno deve incluir os dados de divisão (&lt;code>True&lt;/code> para ativar).&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>RetornaComprovante&lt;/td>
+ &lt;td>Não&lt;/td>
+ &lt;td>Define se o retorno deve incluir o comprovante no modelo padrão (&lt;code>True&lt;/code> para ativar).&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+
+
+
+&lt;div class="expressive-code">
+ &lt;figure class="frame is-terminal has-title not-content">
+ &lt;figcaption class="header">
+ &lt;span class="title">Exemplo de Consulta de Transações&lt;/span>
+ &lt;/figcaption>
+ &lt;div class="highlight" title="Exemplo de Consulta de Transações">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl --location &lt;span class="s1">&amp;#39;https://webapi.relatoriotef.com.br/transacao?cnpj=05625872000169&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">DataInicial=2024-01-01T00:00:00&amp;amp;DataFinal=2024-01-01T23:59:59&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--header &lt;span class="s1">&amp;#39;Authorization: Bearer ••••••&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+ &lt;/figure>
+&lt;/div>
+&lt;p>Em caso de sucesso os dados serão retornados da seguinte forma:&lt;/p></description></item><item><title>Transações de POS</title><link>http://docs.multipluscard.com.br/pt/documentacao/transacao/transacaopos/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/transacao/transacaopos/</guid><description>&lt;p>As transações realizadas por meio dos dispositivos POS da Multiplus Pay ou dos aplicativos da Multiplus Card podem ser consultadas de forma detalhada. A consulta permite, ainda, a obtenção dos comprovantes associados, possibilitando sua utilização em processos de geração de documentos fiscais.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>http://docs.multipluscard.com.br/pt/documentacao/transacao/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/transacao/historicorevisoes/</guid><description>&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ 
+ &lt;div class="callout-content">
+ 
+ &lt;div class="callout-body">
+ &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Migração da documentação no GitHub para a publicação no Portal de Integração;&lt;/li>
+&lt;li>Reestruturação das seções.&lt;/li>
+&lt;/ul>
+
+ &lt;/div>
+ &lt;/div>
+&lt;/div></description></item></channel></rss>

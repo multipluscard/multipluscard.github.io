@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Webservice on Multiplus Card [Docs]</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/</link><description>Recent content in Webservice on Multiplus Card [Docs]</description><generator>Hugo</generator><language>pt</language><copyright>Copyright (c) 2025 Multiplus Card</copyright><lastBuildDate>Thu, 08 May 2025 08:54:32 -0300</lastBuildDate><atom:link href="http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/index.xml" rel="self" type="application/rss+xml"/><item><title>Introdução</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/introducao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/introducao/</guid><description>&lt;p>A integração por Web Service é voltada para sistemas web, aplicações em ambientes Terminal Service ou arquiteturas distribuídas, onde parte da aplicação está em um servidor central e o PinPad permanece conectado fisicamente no terminal do cliente. Nessa abordagem, a aplicação se comunica com o Gerenciador de Pagamentos, por meio de chamadas HTTP padronizadas. A solução oferece alta flexibilidade, mantendo a segurança, controle das transações e compatibilidade com o fluxo operacional do TEF, sendo ideal para ambientes distribuídos e centralizados.&lt;/p></description></item><item><title>Instalação/Configuração</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/configuracao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/configuracao/</guid><description>&lt;p>Para mais detalhes sobre a instalação consulte o Guia de Instalação do TEF Express no Portal do Representante &lt;a href="https://portal.multipluscard.com.br/representante/diversos/download" target="_blank" rel="noopener noreferrer">(link para o Portal)&lt;/a>.&lt;/p></description></item><item><title>Fluxo de Comunicação</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/comunicacao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/comunicacao/</guid><description>&lt;p>A comunicação entre a Automação e a Web Api é realizada utilizando dois endpoints: &lt;code>SetVendaTef&lt;/code> responsável por criar a requisição da transação e &lt;code>GetVendasTef&lt;/code>, responsável por realizar as consultas das transações.&lt;/p></description></item><item><title>Criação de Transações</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/criacaotrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/criacaotrn/</guid><description>&lt;p>Para ser criada uma transação é necessário que seja feita uma requisição &lt;strong>POST&lt;/strong> no endpoint &lt;code>SetVendaTef&lt;/code>, com os seguintes headers:&lt;/p></description></item><item><title>Consulta de Transações</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/consultatrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/consultatrn/</guid><description>&lt;p>Para realizar a consulta em uma transação criada é necessário que seja feita uma requisição &lt;strong>GET&lt;/strong> no endpoint &lt;code>GetVendasTef&lt;/code>, com os seguintes headers:&lt;/p></description></item><item><title>Layout do Header CONTEUDO</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/layoutheader/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/layoutheader/</guid><description>&lt;p>O Header ‘CONTEUDO’ é o responsável por enviar os parâmetros necessários para iniciar transações, realizar cancelamentos, confirmações, operações administrativas, etc.&lt;/p></description></item><item><title>Tipos de Campos</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/tiposcampo/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/tiposcampo/</guid><description>&lt;p>A seguir são apresentados os tipos de campo que deverão estar presentes no header ‘CONTEUDO’ nas requisições realizadas no endpoint &lt;code>SetVendaTef&lt;/code> pela Automação. As informações variam de acordo com o tipo de operação e possuem a seguinte indicação &lt;strong>M&lt;/strong> quando é mandatório, &lt;strong>O&lt;/strong> quando é opcional e &lt;strong>-&lt;/strong> quando ausente.&lt;/p></description></item><item><title>Descrição dos Campos</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/descricaocampos/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/descricaocampos/</guid><description>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Campo&lt;/th>
+ &lt;th>Conteúdo / Descrição&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;span style="white-space: nowrap">000-000&lt;/span>&lt;/td>
+ &lt;td>&lt;strong>HEADER&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o início do arquivo e o tipo de operação relacionada ao arquivo. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de 3 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos válidos:&lt;/strong> &lt;br> ATV - Verifica se o Gerenciador Padrão está ativo &lt;br> ADM - Administrativa &lt;br> REL - Relatório &lt;br> CRT - Cartão &lt;br> CPF - Solicita o CPF na tela do pinpad &lt;br> CEL - Recarga de Celular &lt;br> CNC - Cancelamento &lt;br> CNF - Confirmação de finalização da venda e impressão do cupom &lt;br> NCN - Não confirmação de finalização da venda por desistência do cliente ou erro na impressão do cupom.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>001-000&lt;/td>
+ &lt;td>&lt;strong>IDENTIFICAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o número de controle da solicitação que está sendo feita. Este número é gerado pelo aplicativo de automação comercial, o qual deverá colocar um conteúdo diferente a cada nova solicitação. Este mesmo conteúdo é devolvido nos arquivos de resposta. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 10 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>002-000&lt;/td>
+ &lt;td>&lt;strong>DOCUMENTO FISCAL VINCULADO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Número do documento fiscal vinculado à forma de pagamento ou finalização. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>003-000&lt;/td>
+ &lt;td>&lt;strong>VALOR TOTAL&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Valor total desta forma de pagamento. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes, sendo duas casas decimais sem a virgula separadora&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>004-000&lt;/td>
+ &lt;td>&lt;strong>MOEDA&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a moeda utilizada na operação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de 1 byte &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 &amp;ndash; para Real &lt;br> 1 &amp;ndash; para Dólar&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>009-000&lt;/td>
+ &lt;td>&lt;strong>STATUS DA TRANSAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica se a transação foi aprovada ou recusada e qual o motivo da recusa. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 3 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 &amp;ndash; para transação aprovada &lt;br> Outro valor &amp;ndash; transação negada&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>010-0X0&lt;/td>
+ &lt;td>&lt;strong>NOME DA REDE (OPERADORA/CREDENCIADORA)&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Nome da rede que tratou a transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 16 bytes &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> CIELO &lt;br> REDE &lt;br> GETNET &lt;br> BIN &lt;br> STONE &lt;br> etc.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>010-0X1&lt;/td>
+ &lt;td>&lt;strong>CNPJ DA REDE (OPERADORA/CREDENCIADORA)&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Informar o CNPJ da rede que tratou a transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 14 bytes&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>010-0X2&lt;/td>
+ &lt;td>&lt;strong>CÓDIGO SAT DA REDE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Informar o código SAT da rede que tratou a transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 3 bytes&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>011-00X&lt;/td>
+ &lt;td>&lt;strong>TIPO DA TRANSAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Código identificando o tipo da transação executada &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 2 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 00- Administrativas &amp;ndash; Outras (Reimpressão, Iniciação de Terminal etc.) &lt;br> 01- Administrativa &amp;ndash; Fechamento/Transmissão de Lote &lt;br> 10- Cartão de Crédito à Vista &lt;br> 11- Cartão de Crédito Parcelado pelo Estabelecimento &lt;br> 12- Cartão de Crédito Parcelado pela Administradora &lt;br> 13- Pré-Autorização com Cartão de Crédito &lt;br> 20- Cartão de Débito à Vista &lt;br> 21- Cartão de Débito Pré-Datado &lt;br> 22- Cartão de Débito Parcelada &lt;br> 23- Cartão de Débito à Vista Forçada &lt;br> 24- Cartão de Débito Pré-Datado Forçada &lt;br> 25- Cartão de Débito Pré-Datado sem Garantia &lt;br> 26- Cartão de Débito Pré-Pago &lt;br> 27- Cartão de Crédito Pré-Pago &lt;br> 30- Outros Cartões &lt;br> 40- CDC &lt;br> 41- Consulta CDC &lt;br> 50- Convênio &lt;br> 60- Voucher &lt;br> 99- Outras &lt;br>&lt;br> &lt;strong>Obs.:&lt;/strong> No cancelamento de venda feito através da operação ADM (Administrativa) este campo conterá o tipo da transação de venda que foi cancelada. &lt;br>&lt;br> Exemplo-1: 000-000 = ADM &lt;br> 011-000 = 00 (Administrativas: Reimpressão, Iniciação de Terminal etc.) &lt;br>&lt;br> Exemplo-2: 000-000 = ADM &lt;br> 011-000 = 01 (Administrativa: Fechamento/Transmissão de Lote) &lt;br>&lt;br> Exemplo-3: 000-000 = ADM &lt;br> 011-000 = 03 (Cancelamento Genérico (Crédito, Débito, Private Label, qualquer que tenha sido a modalidade: à Vista, Parcelado pelo Estabelecimento ou pela Administradora)) &lt;br>&lt;br> Exemplo-4: 000-000 = ADM &lt;br> 011-000 = 10 (Cancelamento de Cartão de Crédito, qualquer que tenha sido a modalidade: à Vista, Parcelado pelo Estabelecimento ou pela Administradora) &lt;br>&lt;br> Exemplo-5: 000-000 = ADM &lt;br> 011-000 = 20 (Cancelamento de Cartão de Débito, qualquer que tenha sido a modalidade: à Vista, Pré-Datado, Parcelado etc.)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>012-00X&lt;/td>
+ &lt;td>&lt;strong>NÚMERO DA TRANSAÇÃO - NSU&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o número de sequência (NSU &amp;ndash; Número Sequencial Único) da transação atribuído pelo Host (Sistema das Redes de Cartão que recebe e trata as solicitações das transações TEF). &lt;br>&lt;br> Quando este campo é enviado do Gerenciador Padrão para o Aplicativo de Automação Comercial, ele representa o NSU do Host estabelecido para a transação. &lt;br>&lt;br> Quando este campo é enviado do Aplicativo de Automação Comercial para o Gerenciador Padrão, ele representa o NSU da transação a ser tratada (cancelada, confirmada etc.) &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 12 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>013-00X&lt;/td>
+ &lt;td>&lt;strong>CÓDIGO DE AUTORIZAÇÃO DA TRANSAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o número de autorização da transação atribuída pelo Host. &lt;br>&lt;br> Cada transação TEF possui um número de autorização. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 6 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>014-000&lt;/td>
+ &lt;td>&lt;strong>NÚMERO DO LOTE DA TRANSAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o número de lote da transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 10 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>015-000&lt;/td>
+ &lt;td>&lt;strong>TIMESTAMP DA TRANSAÇÃO HOST&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a data e hora da transação no Host &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMHHMMSS&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>016-000&lt;/td>
+ &lt;td>&lt;strong>TIMESTAMP DA TRANSAÇÃO LOCAL&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a data e hora da transação no ponto de venda. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMHHMMSS&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>017-00X&lt;/td>
+ &lt;td>&lt;strong>TIPO PARCELAMENTO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o tipo de parcelamento aplicado à operação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de 1 byte &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 &amp;ndash; Parcelado estabelecimento &lt;br> 1 &amp;ndash; Parcelado administradora&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>018-00X&lt;/td>
+ &lt;td>&lt;strong>QUANTIDADE DE PARCELAS&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o número de parcelas no caso de transações Parceladas (Crédito ou Débito). &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 2 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>019-yyy&lt;/td>
+ &lt;td>&lt;strong>DATA VENCIMENTO DA PARCELA&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a data em que foi agendada a parcela (yyy). A parcela é indicada pelos três caracteres (yyy) do campo correspondente, onde yyy será igual a 001, 002, &amp;hellip; respectivamente para cada uma das parcelas definidas no campo QUANTIDADE DE PARCELAS. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMAAAA&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>020-yyy&lt;/td>
+ &lt;td>&lt;strong>VALOR DA PARCELA&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o valor da parcela (yyy). A parcela é indicada pelos três caracteres (yyy) do campo correspondente, onde yyy será igual a 001, 002, &amp;hellip; respectivamente para cada uma das parcelas definidas no campo QUANTIDADE DE PARCELAS. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes, sendo duas casas decimais sem a vírgula separadora.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>021-yyy&lt;/td>
+ &lt;td>&lt;strong>NÚMERO DA TRANSAÇÃO &amp;ndash; NSU DA PARCELA&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica o NSU da parcela (yyy). A parcela é indicada pelos três caracteres (yyy) do campo correspondente, onde yyy será igual a 001, 002, &amp;hellip; respectivamente para cada uma das parcelas definidas no campo QUANTIDADE DE PARCELAS. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>022-000&lt;/td>
+ &lt;td>&lt;strong>DATA DA TRANSAÇÃO - COMPROVANTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a data da transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMAAAA&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>023-000&lt;/td>
+ &lt;td>&lt;strong>HORA DA TRANSAÇÃO (LOCAL) - COMPROVANTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a hora da transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; HHMMSS&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>024-000&lt;/td>
+ &lt;td>&lt;strong>DATA PRÉ-DATADO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Contém data de agendamento para pré-datado. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMAAAA&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>025-000&lt;/td>
+ &lt;td>&lt;strong>NÚMERO DA TRANSAÇÃO CANCELADA - NSU&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Número de sequência (NSU) da transação cancelada. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>026-000&lt;/td>
+ &lt;td>&lt;strong>TIMESTAMP DA TRANSAÇÃO CANCELADA - Host&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Contém a data e hora da transação cancelada no Host. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMHHMMSS&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>027-000&lt;/td>
+ &lt;td>&lt;strong>FINALIZAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Dados recebidos do Módulo TEF que executou a transação e que devem ser devolvidos no comando de finalização de uma venda &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 32 bytes&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>028-000&lt;/td>
+ &lt;td>&lt;strong>QUANTIDADE DE LINHAS DO COMPROVANTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a quantidade de linhas do comprovante. Quando não há comprovante o campo deve conter zero. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 3 bytes&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>028-001&lt;/td>
+ &lt;td>&lt;strong>QUANTIDADE DE LINHAS DO 1º COMPROVANTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica a quantidade de linhas do 1º comprovante (Caso possuir 2 vias, o corte será realizado após o número indicado nesse campo). Para retornar esse campo, precisa alterar o Layout de Integração para &amp;ldquo;TEF_DIAL (c/ linha 028-001)&amp;rdquo; nas configurações do Client TEF, na aba &amp;ldquo;Parâmetros&amp;rdquo;. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 3 bytes&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>029-yyy&lt;/td>
+ &lt;td>&lt;strong>IMAGEM DE CADA LINHA DO COMPROVANTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Apresenta a imagem a ser impressa de cada uma das linhas do comprovante. A linha de impressão é indicada pelos três caracteres (yyy) do campo correspondente, onde yyy será igual a 001, 002, &amp;hellip; respectivamente para cada uma das linhas definidas no campo QUANTIDADE DE LINHAS DO COMPROVANTE. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 40 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>030-000&lt;/td>
+ &lt;td>&lt;strong>TEXTO ESPECIAL OPERADOR&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Texto que, quando presente, deve ser apresentado pelo aplicativo de Automação Comercial ao operador. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 40 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>031-000&lt;/td>
+ &lt;td>&lt;strong>TEXTO ESPECIAL CLIENTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Texto que, quando presente, deve ser apresentado pelo aplicativo de Automação Comercial ao cliente. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 40 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>040-00X&lt;/td>
+ &lt;td>&lt;strong>NOME DA ADMINISTRADORA (BANDEIRA)&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Identifica a Administradora do Cartão utilizado. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 12 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> ELECTRON &lt;br> MAESTRO &lt;br> MASTERCARD &lt;br> VISA &lt;br> ELO &lt;br> GOODCARD &lt;br> VALECARD &lt;br> etc.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>740-00X&lt;/td>
+ &lt;td>&lt;strong>NÚMEROS DO CARTÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Exibe o número do cartão que realizou a transação. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de 16 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0000000000000000 a 9999990000009999&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>741-00X&lt;/td>
+ &lt;td>&lt;strong>NOME DO PORTADOR DO CARTÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Exibe o nome do portador do cartão que realizou a transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Alfanumérico de até 20 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>742-00X&lt;/td>
+ &lt;td>&lt;strong>VALIDADE DO CARTÃO DO PORTADOR&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Exibe o número de validade do cartão que realizou a transação &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de 4 bytes.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>743-00X&lt;/td>
+ &lt;td>&lt;strong>VALOR RESTANTE&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Exibe o valor restante à ser pago quando utilizada a função de múltiplos cartões. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes, sendo duas casas decimais sem a virgula separadora.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>999-999&lt;/td>
+ &lt;td>&lt;strong>TRAILER - REGISTRO FINAL&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Indica fim do arquivo. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de 1 byte &amp;ndash; Constante zero&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="campos-opcionais---integração-de-forma-direta--requisição-com-definições-da-transação">Campos Opcionais - Integração de forma direta &amp;ndash; Requisição com definições da transação&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Campo&lt;/th>
+ &lt;th>Conteúdo / Descrição&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>250-000&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> KM (Venda Frota)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>250-001&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Placa (Venda Frota)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>250-002&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Matrícula (Venda Frota)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-000&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Quantidade de Itens&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-011&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 01):&lt;/strong> &lt;br> Código do Produto&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-012&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 01):&lt;/strong> &lt;br> Descrição do Produto&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-013&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 01):&lt;/strong> &lt;br> Quantidade (3 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-014&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 01):&lt;/strong> &lt;br> Valor Unitário (3 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-015&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 01):&lt;/strong> &lt;br> Desconto (2 Casas decimais) (Venda Frota)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-016&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 01):&lt;/strong> &lt;br> Valor Total (2 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-021&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 02):&lt;/strong> &lt;br> Código do Produto&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-022&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 02):&lt;/strong> &lt;br> Descrição do Produto&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-023&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 02):&lt;/strong> &lt;br> Quantidade (3 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-024&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 02):&lt;/strong> &lt;br> Valor Unitário (3 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-025&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 02):&lt;/strong> &lt;br> Desconto (2 Casas decimais) (Venda Frota)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-026&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM 02):&lt;/strong> &lt;br> Valor Total (2 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-XX1&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Código do Produto&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-XX2&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Descrição do Produto&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-XX3&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Quantidade (3 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-XX4&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Valor Unitário (3 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-XX5&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Desconto (2 Casas decimais) (Venda Frota)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>261-XX6&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Valor Total (2 Casas decimais)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-001&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 = Crédito &lt;br> 1 = Débito &lt;br> 2 = Private Label &lt;br> 3 = Débito CDC &lt;br> 4 = Link de Pagamento &lt;br> 5 = Pix &lt;br> 6 = Lista de Link de Pagamento &lt;br> 7 = Parcele Mais&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-002&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 = A vista &lt;br> 1 = Parcelado&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-003&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 = Parcelado ADM (Juros da transação cobrado do dono do cartão) &lt;br> 1 = Parcelado Loja (Juros da transação cobrado da loja)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-004&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> (Qtde. de parcelas)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-005&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> (CNPJ da empresa)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-006&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 1 = PINPAD (Finalização de vendas através do equipamento pinpad) &lt;br> 2 = CIELO LIO (Finalização de vendas através do equipamento Cielo Lio) &lt;br> 3 = PINPDV (Finalização de vendas através do aplicativo PINPDV no SmartPOS)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-007&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> (Código de controle de transação)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-008&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> (0-Exibe tela para consultar CPF / 1-Solicita CPF somente no pinpad)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-009&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Texto Livre (Link de Pagamento)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-010&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Quantidade das parcelas (Link de Pagamento)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-011&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Telefone com DDD (Link de Pagamento)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-012&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Texto Livre (Link de Pagamento)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-013&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Parâmetros Split, válido somente para Multiplus Pay&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>800-014&lt;/td>
+ &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> Campo Livre Split, válido somente para Multiplus Pay&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>Exemplo de Utilização</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/exemplotrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/exemplotrn/</guid><description>&lt;p>A seguir, é apresentado um exemplo de transação via cartão de crédito, com as duas formas possíveis de requisição.&lt;/p>
+&lt;h2 id="requisição-normal">Requisição Normal&lt;/h2>
+&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ 
+ &lt;div class="callout-content">
+ 
+ &lt;div class="callout-body">
+ &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Migração do formato PDF para a publicação no Portal de Integração;&lt;/li>
+&lt;li>Reestruturação das seções.&lt;/li>
+&lt;/ul>
+
+ &lt;/div>
+ &lt;/div>
+&lt;/div></description></item></channel></rss>

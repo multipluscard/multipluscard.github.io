@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QRMultiplus on Multiplus Card [Docs]</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/</link><description>Recent content in QRMultiplus on Multiplus Card [Docs]</description><generator>Hugo</generator><language>pt</language><copyright>Copyright (c) 2025 Multiplus Card</copyright><lastBuildDate>Thu, 08 May 2025 08:54:32 -0300</lastBuildDate><atom:link href="http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/index.xml" rel="self" type="application/rss+xml"/><item><title>Introdução</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/introducao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/introducao/</guid><description>&lt;p>O QRMultiplus é uma solução da Multiplus Card que viabiliza a integração com diferentes PSPs (Provedores de Serviços de Pagamento) para a realização de pagamentos via Pix e carteiras digitais. Com uma única integração, é possível centralizar o acesso a múltiplos PSPs, simplificando o processo de integração e manutenção do sistema.&lt;/p></description></item><item><title>Configuração</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/configuracao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/configuracao/</guid><description>&lt;p>Ao utilizar pela primeira vez o QRMultiplus em um PDV é necessário que seja realizado o processo de configuração, este é composto por duas etapas:&lt;/p></description></item><item><title>Criação da Cobrança</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/criarcobranca/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/criarcobranca/</guid><description>&lt;p>Para criar uma cobrança deve ser feita uma requisição &lt;code>POST&lt;/code> para o endpoint &lt;code>SetVendaQrCode&lt;/code>, informando os seguintes headers:&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Header&lt;/th>
+ &lt;th>Obrigatório&lt;/th>
+ &lt;th>Descrição&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>token&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>Solicite seu token junto à Multiplus Card.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>cnpj&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>CNPJ do estabelecimento sem ponto, traço ou barra.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>caixaid&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>ID para identificação do caixa em nossa plataforma.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>integrador&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>Envie &lt;code>&amp;quot;PIX&amp;quot;&lt;/code> para utilizar o PSP padrão, caso haja apenas um configurado.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>valor&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>Valor da transação, o separador de casa decimal é a virgula. Ex: &lt;code>10,99&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>mensagempix&lt;/code>&lt;/td>
+ &lt;td>-&lt;/td>
+ &lt;td>Mensagem que pode exibir na hora de gerar o QrCode (Utilizável apenas no Efi Bank)&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Legenda:&lt;/strong>&lt;/p></description></item><item><title>Consulta de Status</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/consultarcobranca/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/consultarcobranca/</guid><description>&lt;p>Para consultar o status de uma cobrança deve ser realizada uma requisição &lt;code>POST&lt;/code> no endpoint &lt;code>GetInformacoesVendaQrCode&lt;/code>, informando o código da cobrança retornado no momento da sua criação.&lt;/p></description></item><item><title>Remoção de Cobrança</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/removercobranca/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/removercobranca/</guid><description>&lt;p>A remoção de uma cobrança deve ser executada quando a transação atingir o tempo de expiração definido no campo &lt;code>DataExpiracaoTransacao&lt;/code>, ou em caso de cancelamento por parte do cliente — seja da forma de pagamento selecionada ou da compra em si. Essa operação é fundamental para assegurar que o relatório de vendas reflita apenas transações válidas e concluídas, evitando o acúmulo de registros pendentes de pagamento.&lt;/p></description></item><item><title>Cancelamento de Cobrança</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/cancelarcobranca/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/cancelarcobranca/</guid><description>&lt;p>Para cancelar uma transação (estorno) deve ser feita uma requisição &lt;code>POST&lt;/code> no endpoint &lt;code>SetEstornaVendaQrCode&lt;/code>, informando os seguintes headers:&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Header&lt;/th>
+ &lt;th>Obrigatório&lt;/th>
+ &lt;th>Descrição&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>token&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>Solicite seu token junto à Multiplus Card.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>cnpj&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>CNPJ do estabelecimento sem ponto, traço ou barra.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>codigo&lt;/code>&lt;/td>
+ &lt;td>*&lt;/td>
+ &lt;td>Código retornado no momento da criação da cobrança.&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Legenda:&lt;/strong>&lt;/p></description></item><item><title>Lista de PSPs</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/psps/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/psps/</guid><description>&lt;p>Atualmente os PSPs disponíveis para realização de transações são os seguintes:&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>PSP (Banco)&lt;/th>
+ &lt;th>Valor&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>Banco do Brasil&lt;/td>
+ &lt;td>BB&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Mercado Pago&lt;/td>
+ &lt;td>MERCADOPAGO&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Banco Efi (Gerencianet)&lt;/td>
+ &lt;td>GERENCIANET&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>PicPay&lt;/td>
+ &lt;td>PICPAY&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Itaú&lt;/td>
+ &lt;td>ITAU&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Sicoob&lt;/td>
+ &lt;td>SICOOB&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Sicred&lt;/td>
+ &lt;td>SICREDI&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>LetsBank&lt;/td>
+ &lt;td>LETSBANK&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Stark Bank&lt;/td>
+ &lt;td>STARKBANK&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>MayBank&lt;/td>
+ &lt;td>MAYBANK&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>C6 Bank&lt;/td>
+ &lt;td>C6&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Santander&lt;/td>
+ &lt;td>SANTANDER&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>Histórico de Revisões</title><link>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>http://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/historicorevisoes/</guid><description>&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ 
+ &lt;div class="callout-content">
+ 
+ &lt;div class="callout-body">
+ &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Migração do formato PDF para a publicação no Portal de Integração;&lt;/li>
+&lt;li>Reestruturação das seções.&lt;/li>
+&lt;/ul>
+
+ &lt;/div>
+ &lt;/div>
+&lt;/div></description></item></channel></rss>
