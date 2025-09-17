@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /admin/
-Sitemap: http://docs.multipluscard.com.br/sitemap.xml
+Sitemap: https://docs.multipluscard.com.br/sitemap.xml
