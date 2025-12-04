@@ -4,7 +4,7 @@
 &lt;li>2ª iniciada pelo caractere ‘C’ os dados do comprovante (valor, bandeira, nsu, etc.);&lt;/li>
 &lt;li>3ª iniciada por ‘I’ indica as linhas do comprovante a serem impressas. Uma observação será disponibilizada apenas uma via, a automação será responsável por imprimir quantas vias forem necessárias, e pelo menos duas devem ser impressas.&lt;/li>
 &lt;/ul>
-&lt;p>Na 1ª linha ‘S’, o segundo campo (S;1;Transacao Aceita.) pode ser retornado com os seguintes valores:&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/dll/comtela/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/dll/comtela/historicorevisoes/</guid><description>&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;p>Na 1ª linha ‘S’, o segundo campo (S;1;Transacao Aceita.) pode ser retornado com os seguintes valores:&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/dll/comtela/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/dll/comtela/historicorevisoes/</guid><description>&lt;p>&lt;strong>04/12/2025&lt;/strong>&lt;/p>
 &lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
  
  &lt;div class="callout-content">
@@ -12,10 +12,17 @@
  &lt;div class="callout-body">
  &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>Migração do formato PDF para a publicação no Portal de Integração;&lt;/li>
-&lt;li>Reestruturação das seções.&lt;/li>
+&lt;li>Adicionado código de retorno da transação Pix;&lt;/li>
 &lt;/ul>
 
  &lt;/div>
  &lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;/div>
+
+&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ 
+ &lt;div class="callout-content">
+ 
+ &lt;div class="callout-body">
+ &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p></description></item></channel></rss>

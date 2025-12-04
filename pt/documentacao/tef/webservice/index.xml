@@ -44,7 +44,7 @@
  &lt;/tr>
  &lt;tr>
  &lt;td>011-00X&lt;/td>
- &lt;td>&lt;strong>TIPO DA TRANSAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Código identificando o tipo da transação executada &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 2 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 00- Administrativas &amp;ndash; Outras (Reimpressão, Iniciação de Terminal etc.) &lt;br> 01- Administrativa &amp;ndash; Fechamento/Transmissão de Lote &lt;br> 10- Cartão de Crédito à Vista &lt;br> 11- Cartão de Crédito Parcelado pelo Estabelecimento &lt;br> 12- Cartão de Crédito Parcelado pela Administradora &lt;br> 13- Pré-Autorização com Cartão de Crédito &lt;br> 20- Cartão de Débito à Vista &lt;br> 21- Cartão de Débito Pré-Datado &lt;br> 22- Cartão de Débito Parcelada &lt;br> 23- Cartão de Débito à Vista Forçada &lt;br> 24- Cartão de Débito Pré-Datado Forçada &lt;br> 25- Cartão de Débito Pré-Datado sem Garantia &lt;br> 26- Cartão de Débito Pré-Pago &lt;br> 27- Cartão de Crédito Pré-Pago &lt;br> 30- Outros Cartões &lt;br> 40- CDC &lt;br> 41- Consulta CDC &lt;br> 50- Convênio &lt;br> 60- Voucher &lt;br> 99- Outras &lt;br>&lt;br> &lt;strong>Obs.:&lt;/strong> No cancelamento de venda feito através da operação ADM (Administrativa) este campo conterá o tipo da transação de venda que foi cancelada. &lt;br>&lt;br> Exemplo-1: 000-000 = ADM &lt;br> 011-000 = 00 (Administrativas: Reimpressão, Iniciação de Terminal etc.) &lt;br>&lt;br> Exemplo-2: 000-000 = ADM &lt;br> 011-000 = 01 (Administrativa: Fechamento/Transmissão de Lote) &lt;br>&lt;br> Exemplo-3: 000-000 = ADM &lt;br> 011-000 = 03 (Cancelamento Genérico (Crédito, Débito, Private Label, qualquer que tenha sido a modalidade: à Vista, Parcelado pelo Estabelecimento ou pela Administradora)) &lt;br>&lt;br> Exemplo-4: 000-000 = ADM &lt;br> 011-000 = 10 (Cancelamento de Cartão de Crédito, qualquer que tenha sido a modalidade: à Vista, Parcelado pelo Estabelecimento ou pela Administradora) &lt;br>&lt;br> Exemplo-5: 000-000 = ADM &lt;br> 011-000 = 20 (Cancelamento de Cartão de Débito, qualquer que tenha sido a modalidade: à Vista, Pré-Datado, Parcelado etc.)&lt;/td>
+ &lt;td>&lt;strong>TIPO DA TRANSAÇÃO&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Código identificando o tipo da transação executada &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 2 bytes. &lt;br>&lt;br> &lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 00- Administrativas &amp;ndash; Outras (Reimpressão, Iniciação de Terminal etc.) &lt;br> 01- Administrativa &amp;ndash; Fechamento/Transmissão de Lote &lt;br> 02- Transação Pix &lt;br> 10- Cartão de Crédito à Vista &lt;br> 11- Cartão de Crédito Parcelado pelo Estabelecimento &lt;br> 12- Cartão de Crédito Parcelado pela Administradora &lt;br> 13- Pré-Autorização com Cartão de Crédito &lt;br> 20- Cartão de Débito à Vista &lt;br> 21- Cartão de Débito Pré-Datado &lt;br> 22- Cartão de Débito Parcelada &lt;br> 23- Cartão de Débito à Vista Forçada &lt;br> 24- Cartão de Débito Pré-Datado Forçada &lt;br> 25- Cartão de Débito Pré-Datado sem Garantia &lt;br> 26- Cartão de Débito Pré-Pago &lt;br> 27- Cartão de Crédito Pré-Pago &lt;br> 30- Outros Cartões &lt;br> 40- CDC &lt;br> 41- Consulta CDC &lt;br> 50- Convênio &lt;br> 60- Voucher &lt;br> 99- Outras &lt;br>&lt;br> &lt;strong>Obs.:&lt;/strong> No cancelamento de venda feito através da operação ADM (Administrativa) este campo conterá o tipo da transação de venda que foi cancelada. &lt;br>&lt;br> Exemplo-1: 000-000 = ADM &lt;br> 011-000 = 00 (Administrativas: Reimpressão, Iniciação de Terminal etc.) &lt;br>&lt;br> Exemplo-2: 000-000 = ADM &lt;br> 011-000 = 01 (Administrativa: Fechamento/Transmissão de Lote) &lt;br>&lt;br> Exemplo-3: 000-000 = ADM &lt;br> 011-000 = 03 (Cancelamento Genérico (Crédito, Débito, Private Label, qualquer que tenha sido a modalidade: à Vista, Parcelado pelo Estabelecimento ou pela Administradora)) &lt;br>&lt;br> Exemplo-4: 000-000 = ADM &lt;br> 011-000 = 10 (Cancelamento de Cartão de Crédito, qualquer que tenha sido a modalidade: à Vista, Parcelado pelo Estabelecimento ou pela Administradora) &lt;br>&lt;br> Exemplo-5: 000-000 = ADM &lt;br> 011-000 = 20 (Cancelamento de Cartão de Débito, qualquer que tenha sido a modalidade: à Vista, Pré-Datado, Parcelado etc.)&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td>012-00X&lt;/td>
@@ -312,7 +312,7 @@
  &lt;/tbody>
 &lt;/table></description></item><item><title>Exemplo de Utilização</title><link>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/exemplotrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/exemplotrn/</guid><description>&lt;p>A seguir, é apresentado um exemplo de transação via cartão de crédito, com as duas formas possíveis de requisição.&lt;/p>
 &lt;h2 id="requisição-normal">Requisição Normal&lt;/h2>
-&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>04/12/2025&lt;/strong>&lt;/p>
 &lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
  
  &lt;div class="callout-content">
@@ -320,10 +320,17 @@
  &lt;div class="callout-body">
  &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>Migração do formato PDF para a publicação no Portal de Integração;&lt;/li>
-&lt;li>Reestruturação das seções.&lt;/li>
+&lt;li>Adicionado código de retorno da transação Pix;&lt;/li>
 &lt;/ul>
 
  &lt;/div>
  &lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;/div>
+
+&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
+&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ 
+ &lt;div class="callout-content">
+ 
+ &lt;div class="callout-body">
+ &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p></description></item></channel></rss>
