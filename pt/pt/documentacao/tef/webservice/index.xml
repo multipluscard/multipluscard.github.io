@@ -312,7 +312,7 @@
  &lt;/tbody>
 &lt;/table></description></item><item><title>Exemplo de Utilização</title><link>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/exemplotrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/exemplotrn/</guid><description>&lt;p>A seguir, é apresentado um exemplo de transação via cartão de crédito, com as duas formas possíveis de requisição.&lt;/p>
 &lt;h2 id="requisição-normal">Requisição Normal&lt;/h2>
-&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>04/12/2025&lt;/strong>&lt;/p>
+&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>01/04/2026&lt;/strong>&lt;/p>
 &lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
  
  &lt;div class="callout-content">
@@ -320,17 +320,11 @@
  &lt;div class="callout-body">
  &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>Adicionado código de retorno da transação Pix;&lt;/li>
+&lt;li>Adicionada seção sobre o envio do CNF na função ADM;&lt;/li>
 &lt;/ul>
 
  &lt;/div>
  &lt;/div>
 &lt;/div>
 
-&lt;p>&lt;strong>22/07/2025&lt;/strong>&lt;/p>
-&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
- 
- &lt;div class="callout-content">
- 
- &lt;div class="callout-body">
- &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;strong>04/12/2025&lt;/strong>&lt;/p></description></item></channel></rss>

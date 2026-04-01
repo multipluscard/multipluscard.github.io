@@ -1,0 +1,596 @@
+{
+  "info": {
+    "_postman_id": "13856a9c-2c5c-40b7-9307-1f1d9696bdea",
+    "name": "PinPDV",
+    "description": "Collection montada em cima da [docs Multipluscard PinPDV.](https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24925738",
+    "_collection_link": "https://go.postman.co/collection/24925738-13856a9c-2c5c-40b7-9307-1f1d9696bdea?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Informações Comuns",
+      "item": [
+        {
+          "name": "Listar Empresas",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/empresa?OrdenarPor=Id&OrdenarTipo=DESC",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "empresa"
+              ],
+              "query": [
+                {
+                  "key": "OrdenarPor",
+                  "value": "Id",
+                  "description": "Id, Nome, Cnpj, CadastradoEm, AtualizadoEm"
+                },
+                {
+                  "key": "OrdenarTipo",
+                  "value": "DESC",
+                  "description": "ASC, DESC"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Dispositivos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/pinpdv",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pinpdv"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizando o Documento (Comprovante)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "         Aviso de comprovante          ",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{hostProd}}/venda/:{{vendaIdentificador}}/comprovante",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "venda",
+                ":{{vendaIdentificador}}",
+                "comprovante"
+              ],
+              "variable": [
+                {
+                  "key": "{{vendaIdentificador}}",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cadastro de Produtos",
+      "item": [
+        {
+          "name": "Cadastro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}",
+                "description": "Cliente | Funcionário Cliente"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"Identificador\": \"040320261604DES\",\n        \"Nome\": \"Funada 350\",\n        \"Preco\": 4.90,\n        \"Imagem\": \"{ImagemEmBase64}\"\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{hostProd}}/produto",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "produto"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualização",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"Identificador\": \"040320261604DES\",\n\t\"Nome\": \"Funada 350ml\",\n\t\"Preco\": 3.90,\n\t\"Imagem\": \"{ImagemEmBase64}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{hostProd}}/produto",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "produto"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Desativar Produto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/produto/:{{identificador}}/desativar",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "produto",
+                ":{{identificador}}",
+                "desativar"
+              ],
+              "variable": [
+                {
+                  "key": "{{identificador}}",
+                  "value": "040320261604DES"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ativar Produto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/produto/:{{identificador}}/ativar",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "produto",
+                ":{{identificador}}",
+                "ativar"
+              ],
+              "variable": [
+                {
+                  "key": "{{identificador}}",
+                  "value": "040320261604DES"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Excluir Produto",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/produto/:{{identificador}}",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "produto",
+                ":{{identificador}}"
+              ],
+              "variable": [
+                {
+                  "key": "{{identificador}}",
+                  "value": "44bc66c1e93f44f297739fff0d10518c"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pré-venda",
+      "item": [
+        {
+          "name": "Cadastro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Identificador\": \"040320261604DES\",\n    \"Valor\": 6.00,\n    \"Descricao\": \"Teste - 040320261604DES\",\n    \"Parcelas\": 1,\n    \"TipoPagamento\": 3,\n    \"PinPdvId\": {pinpdvId},\n    \"Produtos\": [\n        {\n            \"Identificador\": \"8a563855602a48ffb24e56ed493ee95a\",\n            \"Quantidade\": 1\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{hostProd}}/pre-venda",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pre-venda"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consulta de Pré-venda",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/pre-venda/:identificadorSistema",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pre-venda",
+                ":identificadorSistema"
+              ],
+              "variable": [
+                {
+                  "key": "identificadorSistema",
+                  "value": "040320261604DES"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Abortar uma Pré-venda",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/pre-venda/:Identificador",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pre-venda",
+                ":Identificador"
+              ],
+              "variable": [
+                {
+                  "key": "Identificador",
+                  "value": "040320261044DES"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "POS TEF",
+      "item": [
+        {
+          "name": "Cadastro da Venda",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"PinPdvId\": {pinpdvId},\n    \"Identificador\": \"vendaCf981239a\",\n    \"Valor\": 100.11,\n    \"Descricao\": \"mensagem\",\n    \"TipoPagamento\": 2,\n    \"Parcelas\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{hostProd}}/pos-venda",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pos-venda"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Abortar uma venda",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/pos-venda/:{{Identificador}}",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pos-venda",
+                ":{{Identificador}}"
+              ],
+              "variable": [
+                {
+                  "key": "{{Identificador}}",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consulta de uma Venda",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/pos-venda/:{{Identificador}}",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pos-venda",
+                ":{{Identificador}}"
+              ],
+              "variable": [
+                {
+                  "key": "{{Identificador}}",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Venda Expressa",
+      "item": [
+        {
+          "name": "Consulta de Venda Expressa",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/venda?DataInicial=2024-12-12T00:00:00&DataFinal=2024-12-12T23:59:59&FiltroTipoVenda=Expressa",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "venda"
+              ],
+              "query": [
+                {
+                  "key": "DataInicial",
+                  "value": "2024-12-12T00:00:00"
+                },
+                {
+                  "key": "DataFinal",
+                  "value": "2024-12-12T23:59:59"
+                },
+                {
+                  "key": "FiltroTipoVenda",
+                  "value": "Expressa"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Consulta de Transações",
+      "item": [
+        {
+          "name": "Consulta de Transações",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "url": {
+              "raw": "{{hostProd}}/venda?DataInicial=2024-12-12T00:00:00&DataFinal=2024-12-12T23:59:59",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "venda"
+              ],
+              "query": [
+                {
+                  "key": "DataInicial",
+                  "value": "2024-12-12T00:00:00"
+                },
+                {
+                  "key": "DataFinal",
+                  "value": "2024-12-12T23:59:59"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "hostProd",
+      "value": "https://api.pinpdv.com.br"
+    },
+    {
+      "key": "Autenticação",
+      "value": "xyz"
+    }
+  ]
+}
