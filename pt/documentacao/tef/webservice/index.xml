@@ -100,11 +100,11 @@
  &lt;/tr>
  &lt;tr>
  &lt;td>025-000&lt;/td>
- &lt;td>&lt;strong>NÚMERO DA TRANSAÇÃO CANCELADA - NSU&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Número de sequência (NSU) da transação cancelada. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes.&lt;/td>
+ &lt;td>&lt;strong>NÚMERO DA TRANSAÇÃO CANCELADA - NSU&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Número de sequência (NSU) da transação aprovada que está sendo cancelada no momento. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico de até 12 bytes.&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td>026-000&lt;/td>
- &lt;td>&lt;strong>TIMESTAMP DA TRANSAÇÃO CANCELADA - Host&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Contém a data e hora da transação cancelada no Host. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMHHMMSS&lt;/td>
+ &lt;td>&lt;strong>TIMESTAMP DA TRANSAÇÃO CANCELADA - Host&lt;/strong> &lt;br>&lt;br> &lt;strong>Finalidade:&lt;/strong> &lt;br> Contém a data e hora da transação aprovada que está sendo cancelada no momento. &lt;br>&lt;br> &lt;strong>Formato:&lt;/strong> &lt;br> Numérico &amp;ndash; DDMMHHMMSS&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td>027-000&lt;/td>
@@ -166,7 +166,7 @@
  &lt;/thead>
  &lt;tbody>
  &lt;tr>
- &lt;td>250-000&lt;/td>
+ &lt;td>&lt;span style="white-space: nowrap">250-000&lt;/span>&lt;/td>
  &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> KM (Venda Frota)&lt;/td>
  &lt;/tr>
  &lt;tr>
@@ -254,6 +254,10 @@
  &lt;td>&lt;strong>Conteúdos Válidos (ITEM XX &amp;ndash; Alterar o &amp;lsquo;XX&amp;rsquo; pelo número do item de 01 até 99):&lt;/strong> &lt;br> Valor Total (2 Casas decimais)&lt;/td>
  &lt;/tr>
  &lt;tr>
+ &lt;td>800-000&lt;/td>
+ &lt;td>&lt;strong>Versão do Gerenciador de Pagamentos:&lt;/strong>&lt;br>- Retorna a versão do Gerenciador de Pagamentos que está em utilização, nos comando &lt;strong>CRT, CNC, REL e CPF&lt;/strong>, não é retornado em: &lt;strong>CNF, NCN e ATV&lt;/strong>. &lt;br> Ex: &lt;strong>v1.416.355&lt;/strong>, com limite de 15 caracteres.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
  &lt;td>800-001&lt;/td>
  &lt;td>&lt;strong>Conteúdos Válidos:&lt;/strong> &lt;br> 0 = Crédito &lt;br> 1 = Débito &lt;br> 2 = Private Label &lt;br> 3 = Débito CDC &lt;br> 4 = Link de Pagamento &lt;br> 5 = Pix &lt;br> 6 = Lista de Link de Pagamento &lt;br> 7 = Parcele Mais&lt;/td>
  &lt;/tr>
@@ -312,7 +316,7 @@
  &lt;/tbody>
 &lt;/table></description></item><item><title>Exemplo de Utilização</title><link>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/exemplotrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/exemplotrn/</guid><description>&lt;p>A seguir, é apresentado um exemplo de transação via cartão de crédito, com as duas formas possíveis de requisição.&lt;/p>
 &lt;h2 id="requisição-normal">Requisição Normal&lt;/h2>
-&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>01/04/2026&lt;/strong>&lt;/p>
+&lt;p>A Automação faz a requisição de forma simplificada, o Gerenciador de Pagamentos é responsável por detalhes como transação parcelada, número de parcelas, etc.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/tef/webservice/historicorevisoes/</guid><description>&lt;p>&lt;strong>08/06/2026&lt;/strong>&lt;/p>
 &lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
  
  &lt;div class="callout-content">
@@ -320,11 +324,17 @@
  &lt;div class="callout-body">
  &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>Adicionada seção sobre o envio do CNF na função ADM;&lt;/li>
+&lt;li>Melhoradas as descrições dos campos retornados;&lt;/li>
 &lt;/ul>
 
  &lt;/div>
  &lt;/div>
 &lt;/div>
 
-&lt;p>&lt;strong>04/12/2025&lt;/strong>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;strong>01/04/2026&lt;/strong>&lt;/p>
+&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ 
+ &lt;div class="callout-content">
+ 
+ &lt;div class="callout-body">
+ &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p></description></item></channel></rss>
