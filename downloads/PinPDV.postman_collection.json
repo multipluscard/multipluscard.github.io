@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "13856a9c-2c5c-40b7-9307-1f1d9696bdea",
-    "name": "PinPDV",
-    "description": "Collection montada em cima da [docs Multipluscard PinPDV.](https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/)",
+    "name": "PINPDV",
+    "description": "# PINPDV — API REST (Multiplus Card)\n\nColeção executável de testes da API. A documentação completa — autenticação, campos,\nexemplos e erros — está online e é a fonte de verdade:\n\n- Introdução: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/\n- Primeiros passos (token / autenticação): https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/\n- Referência (status e enums): https://docs.multipluscard.com.br/pt/documentacao/pinpdv/referencia/\n\nAutenticação: header `Authorization: Bearer {{Autenticação}}` (token de longa duração\ngerado no Portal do Cliente).\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "24925738",
     "_collection_link": "https://go.postman.co/collection/24925738-13856a9c-2c5c-40b7-9307-1f1d9696bdea?source=collection_link"
@@ -44,7 +44,8 @@
                   "description": "ASC, DESC"
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/"
           },
           "response": []
         },
@@ -66,7 +67,8 @@
               "path": [
                 "pinpdv"
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/"
           },
           "response": []
         },
@@ -109,11 +111,13 @@
                   "value": ""
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/impressao/"
           },
           "response": []
         }
-      ]
+      ],
+      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/"
     },
     {
       "name": "Cadastro de Produtos",
@@ -150,7 +154,8 @@
               "path": [
                 "produto"
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
@@ -185,7 +190,8 @@
               "path": [
                 "produto"
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
@@ -215,7 +221,8 @@
                   "value": "040320261604DES"
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
@@ -245,7 +252,8 @@
                   "value": "040320261604DES"
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
@@ -278,11 +286,13 @@
                   "value": "44bc66c1e93f44f297739fff0d10518c"
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         }
-      ]
+      ],
+      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
     },
     {
       "name": "Pré-venda",
@@ -318,7 +328,8 @@
               "path": [
                 "pre-venda"
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/"
           },
           "response": []
         },
@@ -347,12 +358,13 @@
                   "value": "040320261604DES"
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/"
           },
           "response": []
         },
         {
-          "name": "Abortar uma Pré-venda",
+          "name": "Interromper uma Pré-venda",
           "request": {
             "method": "DELETE",
             "header": [
@@ -376,14 +388,52 @@
                   "value": "040320261044DES"
                 }
               ]
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/"
+          },
+          "response": []
+        },
+        {
+          "name": "Interromper uma Pré-venda (forçado)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/",
+            "url": {
+              "raw": "{{hostProd}}/pre-venda/:Identificador?forca=true",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pre-venda",
+                ":Identificador"
+              ],
+              "query": [
+                {
+                  "key": "forca",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "Identificador",
+                  "value": ""
+                }
+              ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/"
     },
     {
-      "name": "POS TEF",
+      "name": "TEF MOBILE",
       "item": [
         {
           "name": "Cadastro da Venda",
@@ -416,12 +466,13 @@
               "path": [
                 "pos-venda"
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/"
           },
           "response": []
         },
         {
-          "name": "Abortar uma venda",
+          "name": "Interromper uma venda",
           "request": {
             "method": "DELETE",
             "header": [
@@ -445,7 +496,8 @@
                   "value": ""
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/"
           },
           "response": []
         },
@@ -474,11 +526,49 @@
                   "value": ""
                 }
               ]
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/"
+          },
+          "response": []
+        },
+        {
+          "name": "Interromper uma venda (forçado)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{Autenticação}}"
+              }
+            ],
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/",
+            "url": {
+              "raw": "{{hostProd}}/pos-venda/:Identificador?forca=true",
+              "host": [
+                "{{hostProd}}"
+              ],
+              "path": [
+                "pos-venda",
+                ":Identificador"
+              ],
+              "query": [
+                {
+                  "key": "forca",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "Identificador",
+                  "value": ""
+                }
+              ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/"
     },
     {
       "name": "Venda Expressa",
@@ -513,13 +603,50 @@
                 {
                   "key": "FiltroTipoVenda",
                   "value": "Expressa"
+                },
+                {
+                  "key": "FiltroStatus",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "FiltroTipoPagamento",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "FiltroPinPdv",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "PaginaNumero",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "QtdRegistro",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "OrdenarPor",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "OrdenarTipo",
+                  "value": "",
+                  "disabled": true
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/vendaexpressa/"
           },
           "response": []
         }
-      ]
+      ],
+      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/vendaexpressa/"
     },
     {
       "name": "Consulta de Transações",
@@ -550,13 +677,55 @@
                 {
                   "key": "DataFinal",
                   "value": "2024-12-12T23:59:59"
+                },
+                {
+                  "key": "FiltroTipoVenda",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "FiltroStatus",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "FiltroTipoPagamento",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "FiltroPinPdv",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "PaginaNumero",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "QtdRegistro",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "OrdenarPor",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "OrdenarTipo",
+                  "value": "",
+                  "disabled": true
                 }
               ]
-            }
+            },
+            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/consultatrn/"
           },
           "response": []
         }
-      ]
+      ],
+      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/consultatrn/"
     }
   ],
   "event": [
@@ -592,5 +761,15 @@
       "key": "Autenticação",
       "value": "xyz"
     }
-  ]
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{Autenticação}}",
+        "type": "string"
+      }
+    ]
+  }
 }

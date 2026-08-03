@@ -1,20 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PinPDV on Multiplus Card [Docs]</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/</link><description>Recent content in PinPDV on Multiplus Card [Docs]</description><generator>Hugo</generator><language>pt</language><copyright>Copyright (c) 2025 Multiplus Card</copyright><lastBuildDate>Thu, 08 May 2025 08:54:32 -0300</lastBuildDate><atom:link href="https://docs.multipluscard.com.br/pt/documentacao/pinpdv/index.xml" rel="self" type="application/rss+xml"/><item><title>Introdução</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/</guid><description>&lt;p>A integração entre o sistema parceiro e o &lt;strong>PINPDV&lt;/strong> é realizada por meio de uma &lt;strong>API Web no padrão REST&lt;/strong>.&lt;/p></description></item><item><title>Informações Comuns</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/infocomuns/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/infocomuns/</guid><description>&lt;p>Em diversos cenários de integração com a API do &lt;strong>PinPDV&lt;/strong>, são requeridas informações específicas e/ou procedimentos operacionais.
-A seguir, são descritos os elementos mais recorrentes e essenciais ao processo de integração.&lt;/p></description></item><item><title>Cadastro de Produtos</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/</guid><description>&lt;p>Os produtos exibidos no PinPDV devem ser previamente cadastrados na API do PinPDV e os mesmos devem estar ativos.&lt;/p>
-&lt;h2 id="cadastro">Cadastro&lt;/h2>
-&lt;p>O cadastro de um produto é realizado no endpoint &lt;code>/produto&lt;/code>, informando o ID da empresa; Quando informada a imagem deve estar codificada em Base64.&lt;/p></description></item><item><title>Pré-venda</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/</guid><description>&lt;p>A funcionalidade de Pré-Venda permite que operações de venda sejam iniciadas e registradas previamente, antes de sua finalização no App PinPDV. Essa funcionalidade é especialmente útil para cenários onde o atendimento começa no sistema e é finalizado fora do caixa (ex: Delivery, abastecimentos, etc.).&lt;/p></description></item><item><title>TEF Mobile</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/</guid><description>&lt;p>A execução de transações no modo TEF Mobile permite que o SmartPOS opere de forma similar a um Pinpad tradicional, proporcionando um fluxo de pagamento alinhado à experiência oferecida por uma TEF House.&lt;/p></description></item><item><title>Venda Expressa</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/vendaexpressa/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/vendaexpressa/</guid><description>&lt;p>As vendas realizadas no SmartPOS através da função &lt;strong>Venda Expressa&lt;/strong>, são possíveis de serem consultadas através da API do PinPDV.&lt;/p></description></item><item><title>Consulta de Transações</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/consultatrn/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/consultatrn/</guid><description>&lt;p>Todas as transações realizadas por meio do PinPDV podem ser consultadas por meio da API do PinPDV. Existem diversos parâmetros que podem ser utilizados para ordenar, filtrar e controlar a paginação das consultas, a seguir estão os parâmetros disponíveis atualmente:&lt;/p></description></item><item><title>Adquirentes/Terminais</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/adquirentes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/adquirentes/</guid><description>&lt;p>O PinPDV, nas versões PRO e Lite, encontra-se homologado e disponível para instalação por meio das lojas das adquirentes, sendo compatível com os dispositivos listados a seguir.&lt;/p></description></item><item><title>Histórico de Revisões</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/historicorevisoes/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/historicorevisoes/</guid><description>&lt;p>&lt;strong>13/05/2026&lt;/strong>&lt;/p>
-&lt;div class="callout callout-note d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PINPDV on Multiplus Card [Docs]</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/</link><description>Recent content in PINPDV on Multiplus Card [Docs]</description><generator>Hugo</generator><language>pt</language><copyright>Copyright (c) 2025 Multiplus Card</copyright><lastBuildDate>Mon, 20 Jul 2026 00:00:00 -0300</lastBuildDate><atom:link href="https://docs.multipluscard.com.br/pt/documentacao/pinpdv/index.xml" rel="self" type="application/rss+xml"/><item><title>Introdução</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/</guid><description>&lt;p>O &lt;strong>PINPDV&lt;/strong> transforma qualquer Smart POS — maquininha com sistema operacional Android — em um terminal de pagamento integrado ao seu sistema, sem Pinpad externo e sem hardware adicional.&lt;/p></description></item><item><title>Primeiros Passos</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/</guid><description>&lt;p>Tudo que você precisa para fazer a primeira chamada à API.&lt;/p>
+&lt;h2 id="1-solicitar-acesso">1. Solicitar acesso&lt;/h2>
+&lt;p>Entre em contato com a &lt;strong>Multiplus Card&lt;/strong> para habilitar seu acesso. Nossa equipe configura o ambiente de testes e libera os portais PINPDV (representante e cliente).&lt;/p></description></item><item><title>Coleção do Postman</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/colecao-postman/</link><pubDate>Fri, 26 Jun 2026 00:00:00 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/colecao-postman/</guid><description>&lt;p>Disponibilizamos uma coleção Postman com &lt;strong>todos os endpoints do PINPDV já configurados&lt;/strong> para acelerar seus testes e a integração.&lt;/p>
+&lt;div class="callout callout-tip d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ &lt;svg
+ xmlns="http://www.w3.org/2000/svg"
+ width="24"
+ height="24"
+ viewBox="0 0 24 24"
+ fill="none"
+ stroke="currentColor"
+ stroke-width="2"
+ stroke-linecap="round"
+ stroke-linejoin="round"
  
+ class="outline/download svg-inline callout-icon me-2 mb-3" id="svg-download" role="img">
+ &lt;path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+ &lt;path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+ &lt;path d="M7 11l5 5l5 -5" />
+ &lt;path d="M12 4l0 12" />
+&lt;/svg>
  &lt;div class="callout-content">
+ &lt;div class="callout-title">
+ &lt;p>Comece por aqui — Coleção do Postman&lt;/p></description></item><item><title>Referência</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/referencia/</link><pubDate>Fri, 12 Jun 2026 00:00:00 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/referencia/</guid><description>&lt;p>Material de consulta rápida — enums, status e comportamentos comuns a todos os módulos.&lt;/p>
+&lt;div class="callout callout-tip d-flex flex-row mt-4 mb-4 pt-4 pe-4 pb-2 ps-3">
+ &lt;svg
+ xmlns="http://www.w3.org/2000/svg"
+ width="24"
+ height="24"
+ viewBox="0 0 24 24"
+ fill="none"
+ stroke="currentColor"
+ stroke-width="2"
+ stroke-linecap="round"
+ stroke-linejoin="round"
  
- &lt;div class="callout-body">
- &lt;p>&lt;strong>Detalhes:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Atualização do processo para gerar token.&lt;/li>
-&lt;li>Atualização da lista de dispositivos homologados.&lt;/li>
-&lt;/ul>
-
- &lt;/div>
- &lt;/div>
-&lt;/div>
-
-&lt;p>&lt;strong>14/04/2026&lt;/strong>&lt;/p></description></item></channel></rss>
+ class="outline/download svg-inline callout-icon me-2 mb-3" id="svg-download" role="img">
+ &lt;path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+ &lt;path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+ &lt;path d="M7 11l5 5l5 -5" />
+ &lt;path d="M12 4l0 12" />
+&lt;/svg>
+ &lt;div class="callout-content">
+ &lt;div class="callout-title">
+ &lt;p>Coleção do Postman&lt;/p></description></item><item><title>TEF Mobile ⭐</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/</guid><description>&lt;p>O módulo mais direto: &lt;strong>seu sistema solicita o pagamento, o Smart POS processa&lt;/strong>.&lt;/p>
+&lt;p>O Smart POS opera como um terminal TEF integrado ao seu sistema — sem Pinpad externo, sem operação manual de valor. O operador só confirma e aproxima/insere o cartão.&lt;/p></description></item><item><title>Pré-venda ⭐</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/</guid><description>&lt;p>Seu sistema cria e acumula múltiplas pré-vendas abertas ao mesmo tempo. Cada operador visualiza a lista no Smart POS e finaliza a que é sua — ideal para &lt;strong>delivery, postos de combustível, mesas de restaurante e atendimento em campo&lt;/strong>.&lt;/p></description></item><item><title>Venda Expressa</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/vendaexpressa/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/vendaexpressa/</guid><description>&lt;p>Transações iniciadas diretamente no Smart POS pelo operador, &lt;strong>sem envolvimento do sistema no momento da venda&lt;/strong>. Com este módulo, seu sistema &lt;strong>captura dados de pagamentos que ele mesmo não originou&lt;/strong> — tudo o que foi cobrado no Smart POS fica disponível para consulta.&lt;/p></description></item><item><title>Webhook</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/webhook/</link><pubDate>Fri, 26 Jun 2026 00:00:00 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/webhook/</guid><description>&lt;p>O &lt;strong>webhook&lt;/strong> é o canal de &lt;strong>notificações de venda&lt;/strong> do PINPDV. Em vez de o seu sistema ficar consultando o status (polling), é o &lt;strong>PINPDV que avisa o seu sistema&lt;/strong> sempre que algo muda em uma venda.&lt;/p></description></item><item><title>Impressão 🖨️</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/impressao/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/impressao/</guid><description>&lt;p>O PINPDV imprime no Smart POS (ou equipamento equivalente) o conteúdo enviado pelo seu sistema, sempre vinculado a uma &lt;strong>venda&lt;/strong>. É especialmente útil para a &lt;strong>impressão do documento fiscal&lt;/strong> — alguns estados tornam obrigatória a impressão do documento fiscal no &lt;strong>mesmo equipamento&lt;/strong> em que a transação foi capturada.&lt;/p></description></item><item><title>Print Server</title><link>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/printserver/</link><pubDate>Thu, 08 May 2025 08:54:32 -0300</pubDate><guid>https://docs.multipluscard.com.br/pt/documentacao/pinpdv/printserver/</guid><description>&lt;p>Em breve.&lt;/p></description></item></channel></rss>
