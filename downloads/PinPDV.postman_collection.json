@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "13856a9c-2c5c-40b7-9307-1f1d9696bdea",
     "name": "PINPDV",
-    "description": "# PINPDV — API REST (Multiplus Card)\n\nColeção executável de testes da API. A documentação completa — autenticação, campos,\nexemplos e erros — está online e é a fonte de verdade:\n\n- Introdução: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/\n- Primeiros passos (token / autenticação): https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/\n- Referência (status e enums): https://docs.multipluscard.com.br/pt/documentacao/pinpdv/referencia/\n\nAutenticação: header `Authorization: Bearer {{Autenticação}}` (token de longa duração\ngerado no Portal do Cliente).\n",
+    "description": "# PINPDV — API REST (Multiplus Card)\n\nTodos os endpoints prontos para importar e testar. A documentação completa — autenticação,\ncampos, exemplos e erros — está online e é a fonte de verdade:\n\n- Introdução: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/introducao/\n- Primeiros passos (token / autenticação): https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/\n- Produtos, categorias e marcas: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/\n- Referência (status e enums): https://docs.multipluscard.com.br/pt/documentacao/pinpdv/referencia/\n\n## Como usar\n\n1. Importe esta coleção no Postman.\n2. Abra as variáveis da coleção e preencha `token` com o token de longa duração gerado no\n   Portal do Cliente PINPDV. O header `Authorization: Bearer` é enviado automaticamente.\n3. Comece pelos endpoints de consulta — *Listar Dispositivos* é o mais rápido para validar o acesso.\n\n## Variáveis\n\n| Variável | Para que serve |\n|---|---|\n| `baseUrl` | endereço da API — já preenchido com produção |\n| `token` | token de acesso, gerado no Portal do Cliente |\n| `categoriaIdentificador` | identificador de exemplo usado no cadastro de categorias |\n| `marcaIdentificador` | idem |\n| `produtoIdentificador` | idem |\n| `vendaIdentificador` | identificador de uma venda, para atualizar o documento |\n| `pinPdvId` | código do dispositivo, obtido em *Listar Dispositivos* |\n\n## Ordem de cadastro\n\nUm produto só aponta para categoria e marca já cadastradas — daí a ordem das pastas.\nNa hora de excluir, o caminho é o inverso: produto primeiro, depois marca e categoria.\n\n## Atenção às pastas de venda\n\n*Pré-venda* e *TEF MOBILE* registram operações reais no dispositivo. Execute uma a uma,\nconscientemente — não use *Run collection* sobre elas.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "24925738",
     "_collection_link": "https://go.postman.co/collection/24925738-13856a9c-2c5c-40b7-9307-1f1d9696bdea?source=collection_link"
@@ -14,20 +14,12 @@
         {
           "name": "Listar Empresas",
           "request": {
-            "auth": {
-              "type": "noauth"
-            },
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/empresa?OrdenarPor=Id&OrdenarTipo=DESC",
+              "raw": "{{baseUrl}}/empresa?OrdenarPor=Id&OrdenarTipo=DESC",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "empresa"
@@ -53,22 +45,17 @@
           "name": "Listar Dispositivos",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/pinpdv",
+              "raw": "{{baseUrl}}/pinpdv",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pinpdv"
               ]
             },
-            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/"
+            "description": "Lista os Smart POS vinculados à conta. O `id` retornado é o `PinPdvId` usado no cadastro de vendas.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/"
           },
           "response": []
         },
@@ -77,10 +64,6 @@
           "request": {
             "method": "PUT",
             "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              },
               {
                 "key": "Content-Type",
                 "value": "text/plain"
@@ -96,19 +79,20 @@
               }
             },
             "url": {
-              "raw": "{{hostProd}}/venda/:{{vendaIdentificador}}/comprovante",
+              "raw": "{{baseUrl}}/venda/:identificador/comprovante",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "venda",
-                ":{{vendaIdentificador}}",
+                ":identificador",
                 "comprovante"
               ],
               "variable": [
                 {
-                  "key": "{{vendaIdentificador}}",
-                  "value": ""
+                  "key": "identificador",
+                  "value": "{{vendaIdentificador}}",
+                  "description": "Identificador da venda cujo documento será atualizado"
                 }
               ]
             },
@@ -120,26 +104,21 @@
       "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/primeiros-passos/"
     },
     {
-      "name": "Cadastro de Produtos",
+      "name": "Cadastro de Categorias",
       "item": [
         {
-          "name": "Cadastro",
+          "name": "Cadastrar categoria",
           "request": {
             "method": "POST",
             "header": [
               {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}",
-                "description": "Cliente | Funcionário Cliente"
-              },
-              {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n    {\n        \"Identificador\": \"040320261604DES\",\n        \"Nome\": \"Funada 350\",\n        \"Preco\": 4.90,\n        \"Imagem\": \"{ImagemEmBase64}\"\n    }\n]",
+              "raw": "{\n    \"identificador\": \"{{categoriaIdentificador}}\",\n    \"nome\": \"Bebidas geladas\",\n    \"ordenar\": 1,\n    \"descricao\": \"Refrigerantes, sucos e água\",\n    \"cor\": \"#1E88E5\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -147,27 +126,24 @@
               }
             },
             "url": {
-              "raw": "{{hostProd}}/produto",
+              "raw": "{{baseUrl}}/produto/categoria",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
-                "produto"
+                "produto",
+                "categoria"
               ]
             },
-            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+            "description": "CAMPOS\nidentificador (texto, obrigatório) — 1 a 32 caracteres, letras/números/hífen, único na empresa\nnome (texto, obrigatório) — 4 a 80 caracteres\nordenar (número, opcional) — 0 a 255, ordem de exibição no Smart POS\ndescricao (texto, opcional) — até 180 caracteres\ncor (texto, opcional) — até 12 caracteres, ex.: #1E88E5\nimagem (texto, opcional) — base64 com prefixo data URI, ex.: \"data:image/png;base64,iVBORw0...\". PNG, JPG, JPEG, GIF ou TIFF, até 1 MB e 512x512 px\n\nRESPOSTA 200 OK com o registro criado. O campo imagem da resposta é a URL pública do arquivo, não o base64.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
         {
-          "name": "Atualização",
+          "name": "Editar categoria",
           "request": {
             "method": "PUT",
             "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              },
               {
                 "key": "Content-Type",
                 "value": "application/json"
@@ -175,7 +151,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"Identificador\": \"040320261604DES\",\n\t\"Nome\": \"Funada 350ml\",\n\t\"Preco\": 3.90,\n\t\"Imagem\": \"{ImagemEmBase64}\"\n}",
+              "raw": "{\n    \"identificador\": \"{{categoriaIdentificador}}\",\n    \"nome\": \"Bebidas\",\n    \"ordenar\": 2,\n    \"descricao\": \"Bebidas em geral\",\n    \"cor\": \"#0D47A1\",\n    \"imagem\": null,\n    \"removerImagem\": false\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -183,116 +159,420 @@
               }
             },
             "url": {
-              "raw": "{{hostProd}}/produto",
+              "raw": "{{baseUrl}}/produto/categoria",
               "host": [
-                "{{hostProd}}"
-              ],
-              "path": [
-                "produto"
-              ]
-            },
-            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
-          },
-          "response": []
-        },
-        {
-          "name": "Desativar Produto",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
-            "url": {
-              "raw": "{{hostProd}}/produto/:{{identificador}}/desativar",
-              "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "produto",
-                ":{{identificador}}",
-                "desativar"
-              ],
-              "variable": [
-                {
-                  "key": "{{identificador}}",
-                  "value": "040320261604DES"
-                }
+                "categoria"
               ]
             },
-            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+            "description": "O identificador vai no corpo e serve para localizar o registro — não é editável.\n\nIMAGEM\nimagem preenchida + removerImagem false → substitui a imagem\nimagem vazia/nula + removerImagem false → mantém a imagem atual\nimagem vazia/nula + removerImagem true → remove a imagem\n\nRESPOSTA 202 Accepted, sem corpo.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
         {
-          "name": "Ativar Produto",
+          "name": "Listar categorias",
           "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "method": "GET",
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/produto/:{{identificador}}/ativar",
+              "raw": "{{baseUrl}}/produto/categoria?paginaNumero=1&qtdRegistro=50&ordenarPor=Nome&ordenarTipo=ASC",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "produto",
-                ":{{identificador}}",
-                "ativar"
+                "categoria"
               ],
-              "variable": [
+              "query": [
                 {
-                  "key": "{{identificador}}",
-                  "value": "040320261604DES"
+                  "key": "paginaNumero",
+                  "value": "1",
+                  "description": "Padrão 1. Mínimo 1."
+                },
+                {
+                  "key": "qtdRegistro",
+                  "value": "50",
+                  "description": "Padrão 100. De 1 a 1000."
+                },
+                {
+                  "key": "ordenarPor",
+                  "value": "Nome",
+                  "description": "Id | Identificador | Nome | Descricao | CadastradoEm | AtualizadoEm. Padrão Id."
+                },
+                {
+                  "key": "ordenarTipo",
+                  "value": "ASC",
+                  "description": "ASC ou DESC. Padrão ASC."
                 }
               ]
             },
-            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+            "description": "RESPOSTA 200 OK com envelope de paginação. Os registros ficam em data; use paginaProxima para saber se há mais páginas.\n\n{\n  \"paginaAtual\": 1,\n  \"itensPorPagina\": 50,\n  \"quantidadeDePaginas\": 3,\n  \"quantidadeTotalDeItens\": 128,\n  \"primeiroRegistro\": 1,\n  \"ultimoRegistro\": 50,\n  \"paginaAnterior\": false,\n  \"paginaProxima\": true,\n  \"data\": []\n}\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         },
         {
-          "name": "Excluir Produto",
+          "name": "Excluir categoria",
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/produto/:{{identificador}}",
+              "raw": "{{baseUrl}}/produto/categoria/:identificador",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "produto",
-                ":{{identificador}}"
+                "categoria",
+                ":identificador"
               ],
               "variable": [
                 {
-                  "key": "{{identificador}}",
-                  "value": "44bc66c1e93f44f297739fff0d10518c"
+                  "key": "identificador",
+                  "value": "{{categoriaIdentificador}}"
                 }
               ]
             },
-            "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+            "description": "RESPOSTA 202 Accepted, sem corpo.\n\nProdutos vinculados à categoria não são excluídos nem bloqueados — apenas deixam de exibi-la.\n\nSe houver produtos apontando para esta categoria, exclua-os antes — ou o vínculo simplesmente deixa de aparecer.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
           },
           "response": []
         }
       ],
-      "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+      "description": "Cadastro, edição, listagem e exclusão de categorias de produto.\n\nA categoria agrupa produtos na tela do Smart POS. Cadastre-a antes dos produtos que apontam para ela.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+    },
+    {
+      "name": "Cadastro de Marcas",
+      "item": [
+        {
+          "name": "Cadastrar marca",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identificador\": \"{{marcaIdentificador}}\",\n    \"nome\": \"Coca-Cola\",\n    \"ordenar\": 1,\n    \"descricao\": \"Refrigerantes Coca-Cola\",\n    \"cor\": \"#E53935\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produto/marca",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                "marca"
+              ]
+            },
+            "description": "Contrato idêntico ao de categoria — mesmos campos, mesmas regras, mesmas respostas. Muda apenas a rota.\n\nCAMPOS\nidentificador (texto, obrigatório) — 1 a 32 caracteres, letras/números/hífen, único na empresa\nnome (texto, obrigatório) — 4 a 80 caracteres\nordenar (número, opcional) — 0 a 255\ndescricao (texto, opcional) — até 180 caracteres\ncor (texto, opcional) — até 12 caracteres\nimagem (texto, opcional) — base64 com prefixo data URI, até 1 MB e 512x512 px\n\nRESPOSTA 200 OK com o registro criado.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Editar marca",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identificador\": \"{{marcaIdentificador}}\",\n    \"nome\": \"Coca-Cola Brasil\",\n    \"ordenar\": 2,\n    \"descricao\": \"Bebidas Coca-Cola\",\n    \"cor\": \"#B71C1C\",\n    \"imagem\": null,\n    \"removerImagem\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produto/marca",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                "marca"
+              ]
+            },
+            "description": "Mesmo comportamento de imagem da categoria.\n\nRESPOSTA 202 Accepted, sem corpo.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Listar marcas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produto/marca?paginaNumero=1&qtdRegistro=50&ordenarPor=Nome&ordenarTipo=ASC",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                "marca"
+              ],
+              "query": [
+                {
+                  "key": "paginaNumero",
+                  "value": "1",
+                  "description": "Padrão 1. Mínimo 1."
+                },
+                {
+                  "key": "qtdRegistro",
+                  "value": "50",
+                  "description": "Padrão 100. De 1 a 1000."
+                },
+                {
+                  "key": "ordenarPor",
+                  "value": "Nome",
+                  "description": "Id | Identificador | Nome | Descricao | CadastradoEm | AtualizadoEm. Padrão Id."
+                },
+                {
+                  "key": "ordenarTipo",
+                  "value": "ASC",
+                  "description": "ASC ou DESC. Padrão ASC."
+                }
+              ]
+            },
+            "description": "RESPOSTA 200 OK com envelope de paginação. Formato dos itens igual ao da listagem de categorias.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Excluir marca",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produto/marca/:identificador",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                "marca",
+                ":identificador"
+              ],
+              "variable": [
+                {
+                  "key": "identificador",
+                  "value": "{{marcaIdentificador}}"
+                }
+              ]
+            },
+            "description": "RESPOSTA 202 Accepted, sem corpo.\n\nProdutos vinculados à marca não são excluídos nem bloqueados — apenas deixam de exibi-la.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        }
+      ],
+      "description": "Contrato idêntico ao de categoria — mesmos campos, mesmas regras, mesmas respostas. Muda apenas a rota.\n\nCadastre a marca antes dos produtos que apontam para ela.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+    },
+    {
+      "name": "Cadastro de Produtos",
+      "item": [
+        {
+          "name": "Cadastrar produtos (lote)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"identificador\": \"{{produtoIdentificador}}\",\n        \"nome\": \"Refrigerante lata 350ml\",\n        \"preco\": 6.50,\n        \"unidade\": \"Unidade\",\n        \"descricao\": \"Lata 350ml gelada\",\n        \"categoria\": \"{{categoriaIdentificador}}\",\n        \"marca\": \"{{marcaIdentificador}}\",\n        \"modelo\": \"Lata\",\n        \"codigoBarras\": \"7894900011517\"\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produto",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto"
+              ]
+            },
+            "description": "Cadastro em lote: os produtos vão em data, de 1 até 100 por requisição.\n\nATENÇÃO: enviar o array direto na raiz, sem o data em volta, devolve 400 com a mensagem \"O formato do corpo da requisição é inválido ou não foi reconhecido.\" A resposta, ao contrário, é um array na raiz.\n\nCAMPOS DE CADA ITEM\nidentificador (texto, obrigatório) — 1 a 32 caracteres, letras/números/hífen, único na empresa\nnome (texto, obrigatório) — 4 a 80 caracteres\npreco (decimal, obrigatório) — maior que 0 e até 999999,99\nunidade (texto, opcional) — padrão Unidade. Ver lista abaixo\ndescricao (texto, opcional) — até 180 caracteres\ncategoria (texto, opcional) — IDENTIFICADOR de uma categoria já cadastrada\nmarca (texto, opcional) — IDENTIFICADOR de uma marca já cadastrada\nmodelo (texto, opcional) — até 60 caracteres\ncodigoBarras (texto, opcional) — até 40 caracteres\nimagem (texto, opcional) — base64 com prefixo data URI, até 1 MB e 512x512 px\n\nUNIDADES ACEITAS\nUnidade, Litro, Quilograma\n\nREGRAS DO LOTE\n- não repetir o mesmo identificador dentro da mesma requisição\n- validação é tudo ou nada: um item inválido reprova a requisição inteira com 422\n- categoria e marca precisam existir antes — cadastre-as primeiro\n\nRESPOSTA 200 OK com um objeto por produto criado.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Listar produtos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produto?paginaNumero=1&qtdRegistro=100&ordenarPor=Nome&ordenarTipo=ASC",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto"
+              ],
+              "query": [
+                {
+                  "key": "paginaNumero",
+                  "value": "1",
+                  "description": "Padrão 1. Mínimo 1."
+                },
+                {
+                  "key": "qtdRegistro",
+                  "value": "100",
+                  "description": "Padrão 100. De 1 a 1000."
+                },
+                {
+                  "key": "ordenarPor",
+                  "value": "Nome",
+                  "description": "Id | Identificador | Nome | Descricao | Categoria | Marca | Modelo | CodigoBarras | IsAtivo | Preco | CadastradoEm | AtualizadoEm. Padrão Id."
+                },
+                {
+                  "key": "ordenarTipo",
+                  "value": "ASC",
+                  "description": "ASC ou DESC. Padrão ASC."
+                },
+                {
+                  "key": "removerImagem",
+                  "value": "true",
+                  "description": "Omite as imagens da resposta — útil para sincronizações grandes.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "RESPOSTA 200 OK com envelope de paginação. Os registros ficam em data.\n\nA listagem traz produtos ativos e inativos — use o campo isAtivo para distinguir.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Editar produto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identificador\": \"{{produtoIdentificador}}\",\n    \"nome\": \"Refrigerante lata 350ml\",\n    \"preco\": 7.00,\n    \"unidade\": \"Unidade\",\n    \"descricao\": \"Lata 350ml\",\n    \"categoria\": \"{{categoriaIdentificador}}\",\n    \"marca\": \"{{marcaIdentificador}}\",\n    \"modelo\": \"Lata\",\n    \"codigoBarras\": \"7894900011517\",\n    \"imagem\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produto",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto"
+              ]
+            },
+            "description": "Um produto por requisição. O corpo é o produto direto — sem array.\n\nPONTOS DE ATENÇÃO\n- É substituição completa, não alteração parcial. Campo omitido é gravado como vazio: envie sempre o produto inteiro, inclusive os campos que não mudaram.\n- categoria ou marca enviadas vazias desvinculam o produto.\n- imagem vazia ou nula mantém a imagem atual.\n\nRESPOSTA 200 OK com o produto atualizado, no mesmo formato do cadastro.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Desativar produto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produto/:identificador/desativar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                ":identificador",
+                "desativar"
+              ],
+              "variable": [
+                {
+                  "key": "identificador",
+                  "value": "{{produtoIdentificador}}"
+                }
+              ]
+            },
+            "description": "Tira o produto do ponto de venda sem removê-lo do cadastro. Pode ser reativado depois.\n\nRESPOSTA 202 Accepted, sem corpo.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Ativar produto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produto/:identificador/ativar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                ":identificador",
+                "ativar"
+              ],
+              "variable": [
+                {
+                  "key": "identificador",
+                  "value": "{{produtoIdentificador}}"
+                }
+              ]
+            },
+            "description": "RESPOSTA 202 Accepted, sem corpo.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        },
+        {
+          "name": "Excluir produto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produto/:identificador",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produto",
+                ":identificador"
+              ],
+              "variable": [
+                {
+                  "key": "identificador",
+                  "value": "{{produtoIdentificador}}"
+                }
+              ]
+            },
+            "description": "RESPOSTA 202 Accepted, sem corpo.\n\nO produto sai do cadastro, mas permanece nas vendas já registradas. Para apenas tirá-lo do ponto de venda, use Desativar produto.\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
+          },
+          "response": []
+        }
+      ],
+      "description": "Cadastro em lote, listagem, edição unitária, ativação/desativação e exclusão.\n\nANTES DE COMEÇAR\nUm produto só aponta para categoria e marca já cadastradas. Se for usar esses vínculos, cadastre-os primeiro.\n\nIDENTIFICADOR\nProduto, categoria e marca são endereçados por um identificador definido por quem cadastra (SKU, código interno): 1 a 32 caracteres, apenas letras, números e hífen, único dentro da empresa. Não é editável.\n\nRESPOSTAS\n200 OK — cadastro ou listagem, com conteúdo\n202 Accepted — edição, ativação/desativação e exclusão, sem corpo\n422 — dados inválidos, com a lista de erros por campo\n400 — falha de negócio\n401 — token ausente ou inválido\n403 — sem permissão para a operação\n\n📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/produtos/"
     },
     {
       "name": "Pré-venda",
@@ -303,17 +583,13 @@
             "method": "POST",
             "header": [
               {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              },
-              {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"Identificador\": \"040320261604DES\",\n    \"Valor\": 6.00,\n    \"Descricao\": \"Teste - 040320261604DES\",\n    \"Parcelas\": 1,\n    \"TipoPagamento\": 3,\n    \"PinPdvId\": {pinpdvId},\n    \"Produtos\": [\n        {\n            \"Identificador\": \"8a563855602a48ffb24e56ed493ee95a\",\n            \"Quantidade\": 1\n        }\n    ]\n}",
+              "raw": "{\n    \"Identificador\": \"040320261604DES\",\n    \"Valor\": 6.00,\n    \"Descricao\": \"Teste - 040320261604DES\",\n    \"Parcelas\": 1,\n    \"TipoPagamento\": 3,\n    \"PinPdvId\": {{pinPdvId}},\n    \"Produtos\": [\n        {\n            \"Identificador\": \"{{produtoIdentificador}}\",\n            \"Quantidade\": 1\n        }\n    ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -321,9 +597,9 @@
               }
             },
             "url": {
-              "raw": "{{hostProd}}/pre-venda",
+              "raw": "{{baseUrl}}/pre-venda",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pre-venda"
@@ -337,16 +613,11 @@
           "name": "Consulta de Pré-venda",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/pre-venda/:identificadorSistema",
+              "raw": "{{baseUrl}}/pre-venda/:identificadorSistema",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pre-venda",
@@ -367,16 +638,11 @@
           "name": "Interromper uma Pré-venda",
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/pre-venda/:Identificador",
+              "raw": "{{baseUrl}}/pre-venda/:Identificador",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pre-venda",
@@ -397,17 +663,12 @@
           "name": "Interromper uma Pré-venda (forçado)",
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/prevenda/",
             "url": {
-              "raw": "{{hostProd}}/pre-venda/:Identificador?forca=true",
+              "raw": "{{baseUrl}}/pre-venda/:Identificador?forca=true",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pre-venda",
@@ -441,17 +702,13 @@
             "method": "POST",
             "header": [
               {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              },
-              {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"PinPdvId\": {pinpdvId},\n    \"Identificador\": \"vendaCf981239a\",\n    \"Valor\": 100.11,\n    \"Descricao\": \"mensagem\",\n    \"TipoPagamento\": 2,\n    \"Parcelas\": 1\n}",
+              "raw": "{\n    \"PinPdvId\": {{pinPdvId}},\n    \"Identificador\": \"vendaCf981239a\",\n    \"Valor\": 100.11,\n    \"Descricao\": \"mensagem\",\n    \"TipoPagamento\": 2,\n    \"Parcelas\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -459,9 +716,9 @@
               }
             },
             "url": {
-              "raw": "{{hostProd}}/pos-venda",
+              "raw": "{{baseUrl}}/pos-venda",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pos-venda"
@@ -475,24 +732,19 @@
           "name": "Interromper uma venda",
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/pos-venda/:{{Identificador}}",
+              "raw": "{{baseUrl}}/pos-venda/:Identificador",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pos-venda",
-                ":{{Identificador}}"
+                ":Identificador"
               ],
               "variable": [
                 {
-                  "key": "{{Identificador}}",
+                  "key": "Identificador",
                   "value": ""
                 }
               ]
@@ -505,24 +757,19 @@
           "name": "Consulta de uma Venda",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/pos-venda/:{{Identificador}}",
+              "raw": "{{baseUrl}}/pos-venda/:Identificador",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pos-venda",
-                ":{{Identificador}}"
+                ":Identificador"
               ],
               "variable": [
                 {
-                  "key": "{{Identificador}}",
+                  "key": "Identificador",
                   "value": ""
                 }
               ]
@@ -535,17 +782,12 @@
           "name": "Interromper uma venda (forçado)",
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/postef/",
             "url": {
-              "raw": "{{hostProd}}/pos-venda/:Identificador?forca=true",
+              "raw": "{{baseUrl}}/pos-venda/:Identificador?forca=true",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "pos-venda",
@@ -577,16 +819,11 @@
           "name": "Consulta de Venda Expressa",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/venda?DataInicial=2024-12-12T00:00:00&DataFinal=2024-12-12T23:59:59&FiltroTipoVenda=Expressa",
+              "raw": "{{baseUrl}}/venda?DataInicial=2024-12-12T00:00:00&DataFinal=2024-12-12T23:59:59&FiltroTipoVenda=Expressa",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "venda"
@@ -655,16 +892,11 @@
           "name": "Consulta de Transações",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{Autenticação}}"
-              }
-            ],
+            "header": [],
             "url": {
-              "raw": "{{hostProd}}/venda?DataInicial=2024-12-12T00:00:00&DataFinal=2024-12-12T23:59:59",
+              "raw": "{{baseUrl}}/venda?DataInicial=2024-12-12T00:00:00&DataFinal=2024-12-12T23:59:59",
               "host": [
-                "{{hostProd}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "venda"
@@ -728,38 +960,41 @@
       "description": "📖 Documentação: https://docs.multipluscard.com.br/pt/documentacao/pinpdv/consultatrn/"
     }
   ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
   "variable": [
     {
-      "key": "hostProd",
-      "value": "https://api.pinpdv.com.br"
+      "key": "baseUrl",
+      "value": "https://api.pinpdv.com.br",
+      "type": "string"
     },
     {
-      "key": "Autenticação",
-      "value": "xyz"
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "categoriaIdentificador",
+      "value": "BEBIDAS",
+      "type": "string"
+    },
+    {
+      "key": "marcaIdentificador",
+      "value": "COCACOLA",
+      "type": "string"
+    },
+    {
+      "key": "produtoIdentificador",
+      "value": "REFRI-350",
+      "type": "string"
+    },
+    {
+      "key": "vendaIdentificador",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "pinPdvId",
+      "value": "",
+      "type": "string"
     }
   ],
   "auth": {
@@ -767,7 +1002,7 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{Autenticação}}",
+        "value": "{{token}}",
         "type": "string"
       }
     ]
