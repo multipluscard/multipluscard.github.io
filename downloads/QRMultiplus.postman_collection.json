@@ -1,0 +1,272 @@
+{
+  "info": {
+    "_postman_id": "c20ddf22-7ab7-4fd7-b2f8-afad90657cd5",
+    "name": "QRMultiplus",
+    "description": "O QRMultiplus permite integrar pagamentos via Pix com diferentes PSPs por meio de uma única integração, simplificando a implementação e a manutenção do sistema.\n\nPara informações detalhadas sobre configuração, operações e integração, consulte o Portal de Integração da Multiplus Card: [https://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/introducao/](https://docs.multipluscard.com.br/pt/documentacao/qrmultiplus/introducao/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22596956"
+  },
+  "item": [
+    {
+      "name": "Configurar Empresa",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "description": "Token fornecido pela Multiplus Card"
+          },
+          {
+            "key": "cnpj",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay"
+          },
+          {
+            "key": "lojaid",
+            "value": "",
+            "description": "Sugestão utilizar os 6 últimos caracteres do CNPJ do estabelecimento"
+          },
+          {
+            "key": "integrador",
+            "value": "PIX",
+            "description": "Envie PIX para utilizar o PSP padrão ou se possuir apenas 1 configurado, consulte a lista de PSPs disponíveis."
+          },
+          {
+            "key": "latitude",
+            "value": "",
+            "description": "Coordenada de latitude do estabelecimento"
+          },
+          {
+            "key": "longitude",
+            "value": "",
+            "description": "Coordenada de longitude do estabelecimento"
+          },
+          {
+            "key": "cnpjec",
+            "value": "",
+            "description": "CNPJ do Estabelecimento quando utilizar a Multiplus Pay",
+            "disabled": true
+          },
+          {
+            "key": "horarios",
+            "value": "",
+            "description": "Horários de funcionamento no formato: dia|hora inicio|hora fim¬"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}SetEmpresaQrCode",
+          "host": [
+            "{{baseUrl}}SetEmpresaQrCode"
+          ]
+        },
+        "description": "No primeiro uso de um PDV, a configuração da empresa deve ser realizada antes do início de qualquer transação."
+      },
+      "response": []
+    },
+    {
+      "name": "Configurar Caixa",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "description": "Token fornecido pela Multiplus Card"
+          },
+          {
+            "key": "cnpj",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay"
+          },
+          {
+            "key": "nomecaixa",
+            "value": "",
+            "description": "Nome para identificação do PDV. Ex.: CaixaConveniencia"
+          },
+          {
+            "key": "caixaid",
+            "value": "",
+            "description": "ID para identificar o caixa na plataforma"
+          },
+          {
+            "key": "integrador",
+            "value": "PIX",
+            "description": "Envie PIX para utilizar o PSP padrão ou se possuir apenas 1 configurado, consulte a lista de PSPs disponíveis"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}SetCaixaQrCode",
+          "host": [
+            "{{baseUrl}}SetCaixaQrCode"
+          ]
+        },
+        "description": "No primeiro uso de um PDV, a configuração do caixa deve ser realizada antes do início de qualquer transação."
+      },
+      "response": []
+    },
+    {
+      "name": "Criação da Cobrança",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "description": "Token fornecido pela Multiplus Card"
+          },
+          {
+            "key": "cnpj",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay"
+          },
+          {
+            "key": "caixaid",
+            "value": "",
+            "description": "ID para identificar o caixa na plataforma"
+          },
+          {
+            "key": "integrador",
+            "value": "PIX",
+            "description": "Envie PIX para utilizar o PSP padrão ou se possuir apenas 1 configurado, consulte a lista de PSPs disponíveis"
+          },
+          {
+            "key": "valor",
+            "value": "",
+            "description": "Valor da transação, utilizando vírgula como separador decimal e sem separador de milhar. Ex.: 10,55"
+          },
+          {
+            "key": "mensagempix",
+            "value": "",
+            "description": "Mensagem para exibir na cobrança"
+          },
+          {
+            "key": "cnpjec",
+            "value": "",
+            "description": "CNPJ do estabelecimento caso esteja utilizando o Pix da Multiplus Pay",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}SetVendaQrCode",
+          "host": [
+            "{{baseUrl}}SetVendaQrCode"
+          ]
+        },
+        "description": "Cria uma nova cobrança e retorna os dados da transação, incluindo a string do QR Code, o código da transação, o valor e a data de expiração."
+      },
+      "response": []
+    },
+    {
+      "name": "Consulta de Status",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "description": "Token fornecido pela Multiplus Card"
+          },
+          {
+            "key": "cnpj",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay"
+          },
+          {
+            "key": "codigo",
+            "value": "",
+            "description": "Código da transação retornado no momento da criação da cobrança"
+          },
+          {
+            "key": "cnpjec",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}GetInformacoesVendaQrCode",
+          "host": [
+            "{{baseUrl}}GetInformacoesVendaQrCode"
+          ]
+        },
+        "description": "Consulta o status da transação, indicando se está pendente ou aprovada. Para transações aprovadas, retorna o identificador End-to-End (E2E), necessário para a emissão da NFC-e/NF-e."
+      },
+      "response": []
+    },
+    {
+      "name": "Remoção da Cobrança",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "description": "Token fornecido pela Multiplus Card"
+          },
+          {
+            "key": "cnpj",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay"
+          },
+          {
+            "key": "codigo",
+            "value": "",
+            "description": "Código da transação retornado no momento da criação da cobrança"
+          },
+          {
+            "key": "cnpjec",
+            "value": "",
+            "description": "CNPJ do Estabelecimento ou da Multiplus Pay",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}SetRemoveVendaQrCode",
+          "host": [
+            "{{baseUrl}}SetRemoveVendaQrCode"
+          ]
+        },
+        "description": "Remove uma cobrança criada e não paga, permitindo manter o relatório apenas com transações válidas e concluídas."
+      },
+      "response": []
+    },
+    {
+      "name": "Estorno da Cobrança",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "description": "Token fornecido pela Multiplus Card"
+          },
+          {
+            "key": "cnpj",
+            "value": "",
+            "description": "CNPJ do Estabelecimento"
+          },
+          {
+            "key": "codigo",
+            "value": "",
+            "description": "Código da transação retornado no momento da criação da cobrança"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}SetEstornaVendaQrCode",
+          "host": [
+            "{{baseUrl}}SetEstornaVendaQrCode"
+          ]
+        },
+        "description": "Realiza o estorno de uma cobrança. Transações realizadas pela Multiplus Pay não possuem essa funcionalidade de estorno."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.multipluscard.com.br/api/VendasQrCode/"
+    }
+  ]
+}
